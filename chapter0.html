@@ -1,0 +1,761 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web制作初心者向け第0章。Webサイトの仕組み、ファイルとフォルダ、HTMLファイルの作成、VS Code、ブラウザ、GitHubの基本を学びます。">
+    <title>第0章 Web制作を始める準備 | はじめてのWeb制作</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="header-inner">
+        <a href="index.html" class="site-logo">
+            <span class="logo-icon">&lt;/&gt;</span>
+            <span>はじめてのWeb制作</span>
+        </a>
+        <span class="header-label">BEGINNER'S WEB DEVELOPMENT</span>
+        <button class="menu-toggle" id="menuToggle"
+                aria-label="目次を開く" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<div class="page-layout">
+
+    <!-- サイドバー -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-inner">
+            <p class="sidebar-heading">学習メニュー</p>
+            <a href="index.html" class="nav-link">トップページへ戻る</a>
+
+            <p class="nav-category">CHAPTER 00</p>
+            <a href="#intro" class="nav-link active">第0章の概要</a>
+            <a href="#section1" class="nav-link">1. Webサイトの仕組み</a>
+            <a href="#section2" class="nav-link">2. ファイルとフォルダ</a>
+            <a href="#section3" class="nav-link">3. 拡張子とは</a>
+            <a href="#section4" class="nav-link">4. HTMLファイルを作る</a>
+            <a href="#section5" class="nav-link">5. VS Codeを準備する</a>
+            <a href="#section6" class="nav-link">6. ブラウザで表示する</a>
+            <a href="#section7" class="nav-link">7. GitHubを準備する</a>
+            <a href="#summary" class="nav-link">まとめ</a>
+            <a href="#quiz" class="nav-link">理解度チェック</a>
+
+            <div class="sidebar-progress">
+                <p>学習の進捗</p>
+                <div class="progress-track">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <span id="progressText">0 / 7 完了</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- メインコンテンツ -->
+    <main class="main-content">
+
+        <div class="breadcrumb">
+            <a href="index.html">トップページ</a><span>›</span>第0章
+        </div>
+
+        <!-- 導入 -->
+        <section class="chapter-intro" id="intro">
+            <span class="chapter-number">CHAPTER 00</span>
+            <h1>Web制作を始める準備</h1>
+            <p class="chapter-lead">
+                Webサイトを作るために必要な知識と道具をそろえましょう。
+                この章では、パソコンの基本から始めて、初めてのHTMLファイルを
+                ブラウザで表示するところまで進みます。
+            </p>
+            <div class="chapter-meta">
+                <span>📘 対象：プログラミング未経験者</span>
+                <span>⏱ 目安：約60〜90分</span>
+                <span>💻 パソコンを使用</span>
+            </div>
+        </section>
+
+        <div class="learning-goal">
+            <h2>この章のゴール</h2>
+            <p>章を終えるころには、次のことができるようになります。</p>
+            <ul>
+                <li>Webサイトがブラウザに表示される大まかな仕組みを説明できる</li>
+                <li>ファイル・フォルダ・拡張子の違いが分かる</li>
+                <li>HTMLファイルを自分で作成できる</li>
+                <li>Visual Studio Codeでファイルを編集できる</li>
+                <li>作成したHTMLファイルをブラウザで表示できる</li>
+                <li>GitHubが何のためのサービスか説明できる</li>
+            </ul>
+        </div>
+
+        <!-- 1. Webサイトの仕組み -->
+        <section class="lesson-section" id="section1">
+            <div class="section-heading">
+                <span class="section-number">1</span>
+                <h2>Webサイトの仕組みを知ろう</h2>
+            </div>
+
+            <p>
+                普段、スマートフォンやパソコンでWebサイトを見るとき、
+                私たちはブラウザを使っています。
+                たとえば、Google ChromeやMicrosoft Edge、Safariなどがブラウザです。
+            </p>
+            <p>
+                では、ブラウザに表示されるWebサイトは、どこからやってくるのでしょうか。
+                まずは大まかな仕組みを見てみましょう。
+            </p>
+
+            <div class="diagram-card">
+                <h4>Webサイトが表示されるまで</h4>
+                <div class="flow-diagram">
+                    <div class="flow-item">
+                        <div class="flow-icon">💻</div>
+                        <strong>あなたの端末</strong>
+                        <small>Webサイトを見たい</small>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-item">
+                        <div class="flow-icon">🌐</div>
+                        <strong>インターネット</strong>
+                        <small>データをやり取り</small>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-item">
+                        <div class="flow-icon">🖥️</div>
+                        <strong>サーバー</strong>
+                        <small>Webページのデータ</small>
+                    </div>
+                </div>
+                <p class="diagram-caption">
+                    サーバーから受け取ったデータを、ブラウザが画面に表示します。
+                </p>
+            </div>
+
+            <h3>Webサイトを作る人は何をする？</h3>
+            <p>
+                Webサイトを作るときは、HTMLやCSS、JavaScriptなどを使って
+                ファイルを作成します。
+                それらのファイルをブラウザが読み込むことで、
+                文字や画像、ボタンなどが画面に表示されます。
+            </p>
+
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">🧱</div>
+                    <h4>HTML</h4>
+                    <p>文章や画像など、ページの構造を作る</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🎨</div>
+                    <h4>CSS</h4>
+                    <p>色や大きさ、配置など、見た目を整える</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">⚙️</div>
+                    <h4>JavaScript</h4>
+                    <p>クリックへの反応など、動きをつける</p>
+                </div>
+            </div>
+
+            <div class="technology-list">
+                <div class="technology-item html-tech">
+                    <strong>HTML</strong><span>Webページの骨組み</span>
+                </div>
+                <div class="technology-item css-tech">
+                    <strong>CSS</strong><span>Webページのデザイン</span>
+                </div>
+                <div class="technology-item js-tech">
+                    <strong>JavaScript</strong><span>Webページの動作</span>
+                </div>
+            </div>
+
+            <div class="note-box">
+                <strong>この教材での学習順序</strong>
+                <p>
+                    まずHTMLでページを作り、次にCSSで見た目を整えます。
+                    最後にJavaScriptで動きを追加します。
+                    最初からすべてを覚える必要はありません。
+                </p>
+            </div>
+        </section>
+
+        <!-- 2. ファイルとフォルダ -->
+        <section class="lesson-section" id="section2">
+            <div class="section-heading">
+                <span class="section-number">2</span>
+                <h2>ファイルとフォルダを理解しよう</h2>
+            </div>
+
+            <p>
+                パソコンで作業するとき、データは主に「ファイル」と「フォルダ」で管理します。
+                これはWeb制作に限らず、パソコンを使ううえで基本となる考え方です。
+            </p>
+
+            <div class="comparison-grid">
+                <div class="comparison-card selected">
+                    <div class="comparison-icon">📄</div>
+                    <h4>ファイル</h4>
+                    <p>文章、画像、プログラムなど、データそのもの。</p>
+                    <ul>
+                        <li>メモ.txt</li>
+                        <li>写真.png</li>
+                        <li>index.html</li>
+                    </ul>
+                </div>
+                <div class="comparison-card">
+                    <div class="comparison-icon">📁</div>
+                    <h4>フォルダ</h4>
+                    <p>ファイルや別のフォルダをまとめて整理する入れ物。</p>
+                    <ul>
+                        <li>写真フォルダ</li>
+                        <li>学校の課題</li>
+                        <li>websiteフォルダ</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>フォルダの中にフォルダを作れる</h3>
+            <p>
+                フォルダの中に別のフォルダやファイルを入れることができます。
+                Webサイトの制作でも、関連するファイルを一つのフォルダにまとめて管理します。
+            </p>
+
+            <div class="diagram-card">
+                <h4>Webサイトのファイル構成例</h4>
+                <div class="folder-tree">
+                    <div class="tree-root">📁 my-website</div>
+                    <div class="tree-children">
+                        <div class="tree-selected">📄 index.html</div>
+                        <div>📁 css</div>
+                        <div class="tree-children">
+                            <div>📄 style.css</div>
+                        </div>
+                        <div>📁 js</div>
+                        <div class="tree-children">
+                            <div>📄 script.js</div>
+                        </div>
+                        <div>📁 images</div>
+                        <div class="tree-children">
+                            <div>🖼️ logo.png</div>
+                        </div>
+                    </div>
+                </div>
+                <p class="diagram-caption">
+                    一つのWebサイトに関係するファイルを、my-websiteフォルダにまとめています。
+                </p>
+            </div>
+
+            <h3>実際にフォルダを作ってみよう</h3>
+            <ol class="step-list">
+                <li>
+                    <strong>デスクトップを表示する</strong>
+                    <p>Windowsならデスクトップの何もない場所を、Macならデスクトップを表示します。</p>
+                </li>
+                <li>
+                    <strong>新しいフォルダを作る</strong>
+                    <p>Windowsでは右クリックして「新規作成」→「フォルダー」、
+                    Macでは右クリックして「新規フォルダ」を選びます。</p>
+                </li>
+                <li>
+                    <strong>フォルダ名を付ける</strong>
+                    <p><code>my-website</code> という名前にしてください。半角英数字とハイフンを使います。</p>
+                </li>
+            </ol>
+
+            <div class="warning-box">
+                <strong>ファイルの保存場所を覚えておこう</strong>
+                <p>
+                    作成したファイルがどこに保存されたか分からなくなると、
+                    後で開けなくなってしまいます。
+                    今回作るファイルは、必ず <code>my-website</code> フォルダの中に保存しましょう。
+                </p>
+            </div>
+        </section>
+
+        <!-- 3. 拡張子 -->
+        <section class="lesson-section" id="section3">
+            <div class="section-heading">
+                <span class="section-number">3</span>
+                <h2>拡張子とは何だろう？</h2>
+            </div>
+
+            <p>
+                ファイル名の最後に付いている「.html」や「.png」などの部分を
+                <strong>拡張子</strong>といいます。
+                拡張子を見ると、そのファイルがどのような種類のデータなのか判断できます。
+            </p>
+
+            <div class="diagram-card">
+                <h4>ファイル名の例</h4>
+                <div style="text-align:center;">
+                    <div class="file-name-example">
+                        index<span class="extension">.html</span>
+                    </div>
+                    <p class="diagram-caption">
+                        「index」がファイル名、「.html」が拡張子です。
+                    </p>
+                </div>
+            </div>
+
+            <h3>よく使う拡張子</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr><th>拡張子</th><th>ファイルの種類</th><th>用途</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>.html</code></td><td>HTMLファイル</td><td>Webページの構造を書く</td></tr>
+                        <tr><td><code>.css</code></td><td>CSSファイル</td><td>Webページの見た目を整える</td></tr>
+                        <tr><td><code>.js</code></td><td>JavaScriptファイル</td><td>Webページに動きをつける</td></tr>
+                        <tr><td><code>.png</code></td><td>画像ファイル</td><td>画像を保存する</td></tr>
+                        <tr><td><code>.jpg</code></td><td>画像ファイル</td><td>写真などを保存する</td></tr>
+                        <tr><td><code>.txt</code></td><td>テキストファイル</td><td>文字だけの情報を保存する</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Windowsで拡張子を表示する</h3>
+            <p>
+                Windowsでは、初期設定によって拡張子が表示されていない場合があります。
+                ファイル名が <code>index</code> だけに見えていても、
+                実際には <code>index.html</code> かもしれません。
+            </p>
+            <ol class="step-list">
+                <li><strong>エクスプローラーを開く</strong><p>フォルダやファイルを表示するアプリです。</p></li>
+                <li><strong>「表示」を選ぶ</strong><p>ウィンドウ上部にある「表示」メニューを開きます。</p></li>
+                <li><strong>「ファイル名拡張子」をオンにする</strong><p>拡張子が表示されるようになります。Windowsのバージョンによって表示位置は多少異なります。</p></li>
+            </ol>
+
+            <div class="warning-box">
+                <strong>注意：index.html.txt にしない</strong>
+                <p>
+                    拡張子を表示しないままファイル名を変更すると、
+                    意図せず <code>index.html.txt</code> になることがあります。
+                    HTMLファイルを作るときは、最後が本当に <code>.html</code> になっているか確認してください。
+                </p>
+            </div>
+        </section>
+
+        <!-- 4. HTMLファイル作成 -->
+        <section class="lesson-section" id="section4">
+            <div class="section-heading">
+                <span class="section-number">4</span>
+                <h2>初めてのHTMLファイルを作ろう</h2>
+            </div>
+
+            <p>
+                ここから実際にファイルを作ります。
+                まずはHTMLファイルを一つ用意しましょう。
+                HTMLの詳しい書き方は第1章で学ぶため、
+                今はファイルを作成して表示することが目標です。
+            </p>
+
+            <h3>HTMLファイルを作成する</h3>
+            <ol class="step-list">
+                <li><strong>my-websiteフォルダを開く</strong><p>先ほど作成したフォルダを開きます。</p></li>
+                <li><strong>新しいファイルを作る</strong><p>後の節で導入するVisual Studio Codeを使って作成します。</p></li>
+                <li><strong>ファイル名を index.html にする</strong><p>必ず最後が <code>.html</code> になっていることを確認します。</p></li>
+            </ol>
+
+            <h3>次のコードを入力してみよう</h3>
+            <p>
+                次のコードをコピーするか、自分で入力してみてください。
+                このコードは、ブラウザに「はじめてのWebページ」と文章を表示するためのものです。
+            </p>
+
+            <div class="code-card">
+                <div class="code-header">
+                    <span>index.html</span>
+                    <button class="copy-button" data-copy="first-html-code">コピー</button>
+                </div>
+                <pre><code id="first-html-code">&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;はじめてのWebページ&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;はじめてのWebページ&lt;/h1&gt;
+    &lt;p&gt;HTMLの学習を始めました！&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+
+            <div class="note-box">
+                <strong>コードの意味は今は全部分からなくても大丈夫</strong>
+                <p>
+                    この段階では、コードを正しく保存してブラウザに表示できれば十分です。
+                    <code>&lt;h1&gt;</code> や <code>&lt;p&gt;</code> の意味は第1章で詳しく説明します。
+                </p>
+            </div>
+
+            <h3>ファイルを保存する</h3>
+            <p>
+                ファイルを編集したら保存します。
+                保存先は、先ほど作った <code>my-website</code> フォルダです。
+            </p>
+            <div class="shortcut-box">
+                <span>Windows</span><kbd>Ctrl</kbd><span>+</span><kbd>S</kbd>
+                <span>Mac</span><kbd>Command</kbd><span>+</span><kbd>S</kbd>
+            </div>
+            <p>保存操作を忘れると、ブラウザで開いたときに古い内容が表示されることがあります。</p>
+        </section>
+
+        <!-- 5. VS Code -->
+        <section class="lesson-section" id="section5">
+            <div class="section-heading">
+                <span class="section-number">5</span>
+                <h2>Visual Studio Codeを準備しよう</h2>
+            </div>
+
+            <p>
+                プログラムを書くためのソフトを<strong>コードエディタ</strong>といいます。
+                この教材では、無料で利用できる
+                「Visual Studio Code（VS Code）」を使用します。
+            </p>
+
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-icon">📝</div>
+                    <h4>一般的な文書作成ソフト</h4>
+                    <p>文章や資料を整えて作るためのソフトです。</p>
+                </div>
+                <div class="comparison-card selected">
+                    <div class="comparison-icon">💻</div>
+                    <h4>コードエディタ</h4>
+                    <p>プログラムを書くための機能が用意されています。</p>
+                </div>
+            </div>
+
+            <div class="external-link-card">
+                <div class="external-link-icon">🔷</div>
+                <div>
+                    <strong>Visual Studio Code 公式サイト</strong>
+                    <p>VS Codeのダウンロードはこちらから行います。</p>
+                    <a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer">
+                        公式サイトを開く ↗
+                    </a>
+                </div>
+            </div>
+
+            <h3>インストールの手順</h3>
+            <ol class="step-list">
+                <li><strong>公式サイトにアクセスする</strong><p>上のリンクからVisual Studio Codeの公式サイトを開きます。</p></li>
+                <li><strong>自分のパソコンに合ったものをダウンロードする</strong><p>Windows、macOSなど、使用しているOSに合ったインストーラーを選びます。</p></li>
+                <li><strong>ダウンロードしたファイルを実行する</strong><p>画面の案内に従ってインストールします。特別な設定を変更する必要はありません。</p></li>
+                <li><strong>Visual Studio Codeを起動する</strong><p>インストールが完了したら、アプリを起動します。</p></li>
+            </ol>
+
+            <div class="screenshot-placeholder">
+                <div class="fake-vscode">
+                    <div class="fake-title">Visual Studio Code</div>
+                    <div class="fake-main">
+                        <div class="fake-side">
+                            <span>📁</span><span>🔍</span><span>⑂</span><span>▣</span>
+                        </div>
+                        <div class="fake-welcome">
+                            <div class="fake-vscode-logo">&lt;/&gt;</div>
+                            <strong>Visual Studio Code</strong>
+                            <span>コードを書くためのエディタ</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="diagram-caption">
+                    VS Codeの画面イメージ。実際の表示はバージョンや設定によって異なります。
+                </p>
+            </div>
+
+            <h3>作成したフォルダをVS Codeで開く</h3>
+            <ol class="step-list">
+                <li><strong>VS Codeの「ファイル」メニューを開く</strong><p>画面上部のメニューから「フォルダーを開く」を選択します。</p></li>
+                <li><strong>my-websiteフォルダを選択する</strong><p>先ほど作成したフォルダを選びます。</p></li>
+                <li><strong>フォルダを開く</strong><p>画面左側にフォルダ名が表示されれば成功です。</p></li>
+                <li><strong>index.htmlを開く</strong><p>左側のファイル一覧からindex.htmlをクリックします。</p></li>
+            </ol>
+
+            <div class="note-box">
+                <strong>フォルダごと開くのがポイント</strong>
+                <p>
+                    ファイルを一つずつ開くのではなく、Webサイトのフォルダ全体を
+                    VS Codeで開く習慣をつけましょう。
+                    CSSや画像など、関連ファイルをまとめて管理しやすくなります。
+                </p>
+            </div>
+        </section>
+
+        <!-- 6. ブラウザ -->
+        <section class="lesson-section" id="section6">
+            <div class="section-heading">
+                <span class="section-number">6</span>
+                <h2>ブラウザでHTMLを表示しよう</h2>
+            </div>
+
+            <p>
+                HTMLファイルを作成できたら、ブラウザで表示してみましょう。
+                Webサイトを公開する前でも、自分のパソコン上で表示を確認できます。
+            </p>
+
+            <h3>方法：HTMLファイルを直接開く</h3>
+            <ol class="step-list">
+                <li><strong>my-websiteフォルダを開く</strong><p>エクスプローラー（Windows）またはFinder（Mac）でフォルダを表示します。</p></li>
+                <li><strong>index.htmlを探す</strong><p>先ほど作成したHTMLファイルを見つけます。</p></li>
+                <li><strong>index.htmlをダブルクリックする</strong><p>通常は既定のブラウザでファイルが開きます。</p></li>
+                <li><strong>文章が表示されているか確認する</strong><p>「はじめてのWebページ」と「HTMLの学習を始めました！」が表示されていれば成功です。</p></li>
+            </ol>
+
+            <div class="browser-preview">
+                <div class="preview-bar">
+                    <span></span><span></span><span></span>
+                    <small>index.html</small>
+                </div>
+                <div class="preview-content">
+                    <h1>はじめてのWebページ</h1>
+                    <p>HTMLの学習を始めました！</p>
+                </div>
+            </div>
+
+            <div class="success-box">
+                <div class="success-icon">🎉</div>
+                <div>
+                    <strong>表示できたら成功です！</strong>
+                    <p>自分で作成したHTMLファイルを、ブラウザに表示できました。</p>
+                </div>
+            </div>
+
+            <h3>表示がうまくいかないとき</h3>
+            <div class="trouble-item">
+                <strong>ファイルを開いてもコードが表示される</strong>
+                <p>ブラウザではなく、テキストエディタで開いている可能性があります。index.htmlを右クリックし、「プログラムから開く」などからブラウザを選んでください。</p>
+            </div>
+            <div class="trouble-item">
+                <strong>ファイル名が index.html.txt になっている</strong>
+                <p>拡張子が二重になっています。ファイル名を確認し、最後が .html になるように変更してください。</p>
+            </div>
+            <div class="trouble-item">
+                <strong>変更した内容がブラウザに反映されない</strong>
+                <p>VS Codeでファイルを保存してから、ブラウザを再読み込みしてください。</p>
+            </div>
+            <div class="trouble-item">
+                <strong>文字が正しく表示されない</strong>
+                <p>HTMLの文字コード指定がUTF-8になっているか確認してください。今回のコードには <code>&lt;meta charset="UTF-8"&gt;</code> が含まれています。</p>
+            </div>
+        </section>
+
+        <!-- 7. GitHub -->
+        <section class="lesson-section" id="section7">
+            <div class="section-heading">
+                <span class="section-number">7</span>
+                <h2>GitHubを準備しよう</h2>
+            </div>
+
+            <p>
+                Webサイトを作るときは、自分のパソコンだけでファイルを管理することもできます。
+                しかし、インターネット上に保存したり、他の人と共有したりできると便利です。
+                そこで利用するのがGitHubです。
+            </p>
+
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">☁️</div>
+                    <h4>オンラインで保存</h4>
+                    <p>作成したプログラムをインターネット上に保管できます。</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🕘</div>
+                    <h4>変更履歴を管理</h4>
+                    <p>いつ、どのような変更をしたか記録できます。</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🌍</div>
+                    <h4>Webサイトを公開</h4>
+                    <p>GitHub Pagesを使ってWebサイトを公開できます。</p>
+                </div>
+            </div>
+
+            <div class="external-link-card">
+                <div class="external-link-icon">🐙</div>
+                <div>
+                    <strong>GitHub 公式サイト</strong>
+                    <p>アカウントの作成はこちらから行います。</p>
+                    <a href="https://github.com/" target="_blank" rel="noopener noreferrer">
+                        GitHubを開く ↗
+                    </a>
+                </div>
+            </div>
+
+            <h3>アカウントを作成する</h3>
+            <ol class="step-list">
+                <li><strong>GitHub公式サイトを開く</strong><p>上のリンクからGitHubにアクセスします。</p></li>
+                <li><strong>Sign upを選ぶ</strong><p>新しいアカウントを作成する画面に進みます。</p></li>
+                <li><strong>メールアドレスなどを登録する</strong><p>画面の案内に従って必要な情報を入力します。</p></li>
+                <li><strong>メールアドレスを確認する</strong><p>GitHubから届く案内に従い、登録を完了します。</p></li>
+            </ol>
+
+            <div class="warning-box">
+                <strong>ユーザー名は公開されることがあります</strong>
+                <p>
+                    GitHubのユーザー名は、公開したWebサイトのURLなどに使われる場合があります。
+                    本名や誕生日など、公開したくない個人情報を含めない名前を選ぶことをおすすめします。
+                    パスワードや認証コードは他人に教えないでください。
+                </p>
+            </div>
+
+            <h3>GitHubとGitHub Pagesの違い</h3>
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-icon">🐙</div>
+                    <h4>GitHub</h4>
+                    <p>プログラムのファイルや変更履歴を管理・共有するサービスです。</p>
+                </div>
+                <div class="comparison-card selected">
+                    <div class="comparison-icon">🌐</div>
+                    <h4>GitHub Pages</h4>
+                    <p>GitHubに保存したHTMLなどのファイルを、Webサイトとして公開する機能です。</p>
+                </div>
+            </div>
+
+            <p>
+                この教材もGitHub Pagesを利用して公開することを想定しています。
+                実際に自分のWebサイトを公開する手順は、制作したページができてから取り組みます。
+                今はアカウントを準備できれば十分です。
+            </p>
+
+            <div class="note-box">
+                <strong>GitHubを使うのは、今すぐでなくても大丈夫</strong>
+                <p>
+                    HTMLファイルを作ってブラウザで表示するだけなら、GitHubのアカウントは必要ありません。
+                    まずは自分のパソコンでWebページを作れるようになり、その後に公開方法を学びましょう。
+                </p>
+            </div>
+        </section>
+
+        <!-- まとめ -->
+        <section class="lesson-section" id="summary">
+            <div class="section-heading">
+                <span class="section-number">✓</span>
+                <h2>第0章のまとめ</h2>
+            </div>
+
+            <div class="summary-list">
+                <div><strong>Webサイト</strong><span>HTMLなどのファイルをブラウザが読み込んで表示する。</span></div>
+                <div><strong>ファイル</strong><span>文章や画像、プログラムなどのデータそのもの。</span></div>
+                <div><strong>フォルダ</strong><span>ファイルや別のフォルダを整理するための入れ物。</span></div>
+                <div><strong>拡張子</strong><span>ファイルの種類を示す名前の末尾部分。</span></div>
+                <div><strong>VS Code</strong><span>プログラムを書くためのコードエディタ。</span></div>
+                <div><strong>ブラウザ</strong><span>HTMLなどを読み込んでWebページとして表示する。</span></div>
+                <div><strong>GitHub</strong><span>プログラムの保存・共有・変更履歴の管理に使えるサービス。</span></div>
+            </div>
+
+            <div class="practice-banner">
+                <span>FINAL PRACTICE</span>
+                <strong>自分のパソコンでWebページを表示できるか確認しよう</strong>
+                <p>
+                    my-websiteフォルダにあるindex.htmlをブラウザで開き、
+                    作成した文章が表示されることを確認してください。
+                </p>
+            </div>
+
+            <h3>学習完了チェック</h3>
+            <p>できた項目にチェックを入れてください。チェックした数がページ左側の進捗に反映されます。</p>
+
+            <label class="check-item">
+                <input type="checkbox" class="progress-check">
+                <span>Webサイトとブラウザの関係を理解した</span>
+            </label>
+            <label class="check-item">
+                <input type="checkbox" class="progress-check">
+                <span>my-websiteフォルダを作成した</span>
+            </label>
+            <label class="check-item">
+                <input type="checkbox" class="progress-check">
+                <span>拡張子を確認できるようにした</span>
+            </label>
+            <label class="check-item">
+                <input type="checkbox" class="progress-check">
+                <span>index.htmlを作成して保存した</span>
+            </label>
+            <label class="check-item">
+                <input type="checkbox" class="progress-check">
+                <span>VS Codeでフォルダを開けた</span>
+            </label>
+            <label class="check-item">
+                <input type="checkbox" class="progress-check">
+                <span>ブラウザでHTMLを表示できた</span>
+            </label>
+            <label class="check-item">
+                <input type="checkbox" class="progress-check">
+                <span>GitHubの役割を理解し、アカウントを準備した</span>
+            </label>
+        </section>
+
+        <!-- 理解度チェック -->
+        <section class="lesson-section" id="quiz">
+            <div class="section-heading">
+                <span class="section-number">?</span>
+                <h2>理解度チェック</h2>
+            </div>
+            <p>第0章で学んだ内容を確認しましょう。すべての問題に回答してから採点してください。</p>
+
+            <div class="quiz-question" data-answer="b">
+                <span class="question-number">QUESTION 01</span>
+                <h3>Webページの構造を作るために使うものはどれでしょう？</h3>
+                <label><input type="radio" name="q1" value="a"> CSS</label>
+                <label><input type="radio" name="q1" value="b"> HTML</label>
+                <label><input type="radio" name="q1" value="c"> JavaScript</label>
+            </div>
+
+            <div class="quiz-question" data-answer="a">
+                <span class="question-number">QUESTION 02</span>
+                <h3>ファイルを整理するための入れ物はどれでしょう？</h3>
+                <label><input type="radio" name="q2" value="a"> フォルダ</label>
+                <label><input type="radio" name="q2" value="b"> 拡張子</label>
+                <label><input type="radio" name="q2" value="c"> ブラウザ</label>
+            </div>
+
+            <div class="quiz-question" data-answer="c">
+                <span class="question-number">QUESTION 03</span>
+                <h3>HTMLファイルの拡張子はどれでしょう？</h3>
+                <label><input type="radio" name="q3" value="a"> .css</label>
+                <label><input type="radio" name="q3" value="b"> .js</label>
+                <label><input type="radio" name="q3" value="c"> .html</label>
+            </div>
+
+            <div class="quiz-question" data-answer="b">
+                <span class="question-number">QUESTION 04</span>
+                <h3>この教材でコードを書くために使用するソフトはどれでしょう？</h3>
+                <label><input type="radio" name="q4" value="a"> 電卓</label>
+                <label><input type="radio" name="q4" value="b"> Visual Studio Code</label>
+                <label><input type="radio" name="q4" value="c"> ペイント</label>
+            </div>
+
+            <div class="quiz-question" data-answer="a">
+                <span class="question-number">QUESTION 05</span>
+                <h3>GitHub Pagesの主な役割はどれでしょう？</h3>
+                <label><input type="radio" name="q5" value="a"> Webサイトを公開する</label>
+                <label><input type="radio" name="q5" value="b"> 画像を編集する</label>
+                <label><input type="radio" name="q5" value="c"> パソコンを高速化する</label>
+            </div>
+
+            <button class="primary-button" id="gradeButton" type="button">採点する</button>
+            <div class="quiz-result" id="quizResult" aria-live="polite"></div>
+        </section>
+
+        <!-- 次の章 -->
+        <div class="next-chapter">
+            <span>NEXT CHAPTER</span>
+            <h3>第1章：HTMLを学ぼう</h3>
+            <p>
+                準備ができたら、いよいよHTMLの学習に進みます。
+                見出しや文章、画像などを使って、自分のWebページを作っていきましょう。
+            </p>
+            <span class="next-label">第1章は準備中</span>
+        </div>
+
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
